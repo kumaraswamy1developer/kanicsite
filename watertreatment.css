@@ -1,0 +1,299 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap");
+
+:root{
+  --brand:#F9D355;
+  --ink:#0f172a;
+  --muted:#6b7280;
+  --ring:rgba(2,6,23,.08);
+}
+
+*,
+*::before,
+*::after{ box-sizing:border-box; }
+
+html{ scroll-behavior:smooth; }
+
+body{
+  margin:0;
+  font-family:"Inter",system-ui,-apple-system,Segoe UI,Arial,sans-serif;
+  color:var(--ink);
+  background:#fff;
+  line-height:1.6;
+}
+
+.wrapper{
+  width:min(1200px, 92vw);
+  margin-inline:auto;
+  padding: clamp(14px, 4vw, 40px) 0;
+}
+
+.card{
+  background:#fff;
+  border:2px solid var(--brand);
+  border-radius:18px;
+  box-shadow:0 8px 28px var(--ring);
+  padding: clamp(14px, 3.2vw, 36px);
+}
+
+/* Typography */
+
+
+.h1{ font-size:clamp(20px, 4.5vw, 42px); margin:0 0 .5rem 0; font-weight:900; letter-spacing:.2px; }
+.h2{ font-size:clamp(18px, 3.2vw, 30px); margin:.75rem 0 .5rem; font-weight:800; }
+.lead{ font-size:clamp(14px, 2.4vw, 18px); color:var(--muted); }
+
+/* KANIC badges */
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:.4rem;
+  background:var(--brand);
+  color:#0b0b0b;
+  border-radius:12px;
+  line-height:1;
+  font-weight:800;
+  font-size:11px;
+  padding:.35rem .55rem;
+  letter-spacing:.3px;
+  box-shadow:0 2px 10px var(--ring);
+}
+.badge .light{ opacity:.85; font-weight:900; }
+@media (min-width:576px){ .badge{ font-size:12px; padding:.45rem .65rem; } }
+@media (min-width:768px){ .badge{ font-size:14px; padding:.55rem .85rem; border-radius:14px; } }
+@media (min-width:1024px){ .badge{ font-size:17px; padding:.7rem 1rem; border-radius:16px; } }
+@media (min-width:1440px){ .badge{ font-size:20px; padding:.9rem 1.2rem; border-radius:18px; } }
+
+/* HERO — fully responsive image */
+.hero{
+  display:grid;
+  grid-template-columns: 1fr;
+  align-items:center;
+  gap: clamp(12px, 3vw, 28px);
+  margin-top: clamp(8px, 2.5vw, 20px);
+}
+.hero .image-container{ display:block; max-width:100%; }
+.hero img{
+  display:block;
+  width:100%;
+  height:auto;
+  border-radius:16px;
+  box-shadow:0 12px 28px var(--ring);
+}
+@media (min-width:768px){ .hero{ grid-template-columns: 1.05fr .95fr; } }
+@media (min-width:1024px){ .hero{ grid-template-columns: 1.1fr .9fr; } }
+@media (min-width:1440px){ .hero{ grid-template-columns: 1.2fr .8fr; } }
+
+/* EQUAL-HEIGHT ORDERED LISTS with non-overlapping numbers */
+.grid-2{
+  display:grid;
+  grid-template-columns:1fr;
+  gap: clamp(14px, 3vw, 28px);
+  margin-top: clamp(14px, 3vw, 28px);
+  align-items:stretch;
+}
+@media (min-width:768px){
+  .grid-2{ grid-template-columns:1fr 1fr; }
+}
+.grid-2 > section{
+  display:flex;
+  flex-direction:column;
+}
+
+/* Key tweaks below:
+   - list-style-position: inside keeps numbers within the border box
+   - padding-inline-start creates gap between border and numbers/text
+   - extra padding on li improves readability without touching the border */
+ol.services-list,
+ol.technical-manpower-list{
+  list-style: decimal;
+  list-style-position: inside;
+  margin:0;
+  padding-inline-start: clamp(12px, 3vw, 22px); /* gap from border */
+  border:1px solid #0f172a;
+  border-radius:14px;
+  padding-block: clamp(10px, 2.4vw, 18px);
+  flex:1 1 auto;
+  height:100%;
+  display:flex;
+  flex-direction:column;
+}
+
+.services-list li,
+.technical-manpower-list li{
+  padding-inline-start: .25rem; /* small space after the number */
+  margin:.35rem 0;
+}
+
+@media (min-width:1024px){
+  .services-list,
+  .technical-manpower-list{
+    justify-content:space-between;
+  }
+}
+
+.subnote{ font-size:clamp(11px, 2vw, 13px); color:#0f172a; font-weight:700; display:block; }
+
+/* Actions row */
+.actions{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:12px;
+  margin-top: clamp(12px, 2.2vw, 18px);
+}
+.back-button{
+  display:inline-flex;
+  align-items:center;
+  gap:.5rem;
+  font-weight:700;
+  text-decoration:none;
+  color:#111;
+  background:var(--brand);
+  border-radius:12px;
+  border:1px solid rgba(0,0,0,.06);
+  padding:.45rem .7rem;
+  font-size:12px;
+}
+@media (min-width:768px){ .back-button{ padding:.6rem .9rem; font-size:14px; border-radius:14px; } }
+@media (min-width:1024px){ .back-button{ padding:.75rem 1.05rem; font-size:16px; border-radius:16px; } }
+@media (min-width:1440px){ .back-button{ padding:.9rem 1.2rem; font-size:18px; border-radius:18px; } }
+
+a:focus-visible, button:focus-visible{ outline:3px solid #111827; outline-offset:2px; }
+
+/* === Image size controls (put this AFTER your existing CSS) === */
+
+/* Base (extra-small phones) */
+:root{
+  /* % of the column width */
+  --img-scale: 0.60;     /* 60% of its column */
+  /* hard cap in pixels (acts as an upper limit) */
+  --img-max: 420px;
+}
+
+.hero .image-container{ display:flex; justify-content:center; } /* keep centered */
+.hero img{
+  width: calc(100% * var(--img-scale));
+  max-width: var(--img-max);
+  height: auto;
+  margin-inline: auto;   /* center if not using flex */
+  display: block;
+  border-radius: 16px;   /* keep your style */
+}
+
+/* Small ≥576px */
+@media (min-width:576px){
+  :root{
+    --img-scale: 0.65;
+    --img-max: 360px;
+  }
+}
+
+/* Medium ≥768px */
+@media (min-width:768px){
+  :root{
+    --img-scale: 0.7;
+    --img-max: 420px;
+  }
+}
+
+/* Large ≥1024px */
+@media (min-width:1024px){
+  :root{
+    --img-scale: 0.8;
+    --img-max: 550px;
+  }
+}
+
+/* Extra-Large ≥1440px */
+@media (min-width:1440px){
+  :root{
+    --img-scale: 0.8;
+    --img-max: 720px;
+    
+  }
+}
+
+/* Large (≥1024px) */
+@media (min-width:1024px){
+  .hero .lead { line-height: 1.8; }   /* was ~1.6 */
+}
+
+/* Extra-large (≥1440px) */
+@media (min-width:1440px){
+  .hero .lead { line-height: 2; }
+}
+
+
+/* Only affect large screens and up */
+@media (min-width:1024px){
+  .hero .lead {
+    /* grows smoothly from ~1.7 to ~2.0 as viewport widens */
+    line-height: clamp(1.7, 1.2vw + 1.2, 2.0);
+  }
+}
+
+
+/* 1) Reduce space under the heading area */
+.card > header{
+  margin-bottom: clamp(6px, 1vw, 12px);   /* was larger */
+}
+
+/* 2) Tighten the H1 itself */
+.headig{
+line-height: 1.1;
+}
+
+.h1{
+  margin: 0 0 clamp(4px, .8vw, 8px);      /* smaller bottom margin */
+  line-height: 1.1;                        /* optional: denser heading */
+}
+
+/* 3) Remove extra gap above the hero row */
+.hero{
+  margin-top: 0;                           /* was clamp(8px, 2.5vw, 20px) */
+  row-gap: clamp(8px, 1.2vw, 16px);        /* keep a modest internal gap */
+}
+
+/* 4) (Optional) Nudge container paddings lower */
+.wrapper{
+  padding-block-start: clamp(8px, 1.5vw, 16px);
+}
+.card{
+  padding-block-start: clamp(10px, 1.6vw, 18px);
+}
+
+/* Keep it tight on large/XL too */
+@media (min-width:1024px){
+  .card > header{ margin-bottom: 10px; }
+  .hero{ margin-top: 4px; }
+}
+
+/* Tighten heading-to-hero gap on large screens */
+@media (min-width:1024px){
+  /* kill extra space under the header */
+  .card > header{
+    margin-bottom: 0;         /* remove margin that creates a big gap */
+    padding-bottom: 6px;      /* small, controlled spacing */
+  }
+
+  /* remove space before the hero row */
+  .card .hero{
+    margin-top: 0;
+    row-gap: 12px;            /* keep a modest internal gap */
+  }
+
+  /* first text block in the hero: nuke default top margin */
+  .card .hero > :first-child > p,
+  .card .hero .lead{
+    margin-top: 0;
+  }
+}
+
+/* Even tighter on extra-large screens */
+@media (min-width:1440px){
+  .card > header{ padding-bottom: 4px; }
+  .card .hero{ row-gap: 10px; }
+}
+
+
